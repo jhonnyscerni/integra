@@ -1,0 +1,52 @@
+<div class="page-layout simple fullwidth">
+
+  <!-- HEADER -->
+  <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
+      <div fxLayout="column" fxLayoutAlign="center start">
+          <div class="black-fg" fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon class="secondary-text s-18">home</mat-icon>
+              <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
+              <span class="secondary-text">Dashboard</span>
+          </div>
+          <div class="h1 mt-16">Catálogo</div>
+      </div>
+  </div>
+  <!-- / HEADER -->
+
+   <!-- CONTENT -->
+   <div class="content p-24 mat-white-bg">
+
+      <mat-list role="list">
+          <mat-list-item role="listitem">
+            <div fxLayout="row" fxLayoutGap="20px" class="fullwidth">
+              <div fxFlex="90" fxFlex.xs="80" class="fullwidth" fxLayout.xs="column" fxLayoutAlign="center center"
+              fxLayoutAlign.xs="center start" fxLayoutGap.xs="0px">
+                
+                  <div fxFlex="100">
+                      <b>Name</b>
+                    </div>
+                  
+
+              </div>
+              
+            </div>
+          </mat-list-item>
+        
+
+      <div fxLayout="column" *ngFor="let item of products">
+        <mat-list-item role="listitem" class="list-item-resp">
+          <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
+            <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
+              fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp"> 
+              <div fxFlex="100" class="list-card-field" >{{item?.name }}</div>      
+            </div>
+          </div>
+        </mat-list-item>
+      </div>
+
+    </mat-list>
+
+    
+    </div>
+
+  </div>

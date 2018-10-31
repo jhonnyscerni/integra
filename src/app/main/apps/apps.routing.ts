@@ -1,3 +1,4 @@
+import { WoocommerceListPublicadoComponent } from './woocommerce/woocommerce-list-publicado/woocommerce-list-publicado.component';
 import { CatalogoComponent } from './produtos/catalogo/catalogo.component';
 import { LojaListComponent } from './lojas/loja-list/loja-list.component';
 import { LojaEditComponent } from './lojas/loja-edit/loja-edit.component';
@@ -19,6 +20,13 @@ const routes: Routes = [
     {
         path: 'produtos', children: [
         { path: 'catalogo', component: CatalogoComponent }
+    ]
+    }
+
+    ,
+    {
+        path: 'woocommerce', children: [
+        { path: 'woocommerce-list-publicado', component: WoocommerceListPublicadoComponent }
     ]
     }
 

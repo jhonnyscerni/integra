@@ -1,3 +1,4 @@
+import { WoocommerceListPublicadoComponent } from './woocommerce/woocommerce-list-publicado/woocommerce-list-publicado.component';
 import { ProdutoService } from './../../services/produto.service';
 import { AuthService } from './../../services/auth.service';
 import { CatalogoComponent } from './produtos/catalogo/catalogo.component';
@@ -14,6 +15,7 @@ import { HttpModule } from '@angular/http';
 import { PaginationComponent } from './pagination/paginacao.component';
 
 import {PaginatorModule} from 'primeng/paginator';
+import { WoocommerceService } from '../../services/woocommerce.service';
 
 
 @NgModule({
@@ -22,6 +24,7 @@ import {PaginatorModule} from 'primeng/paginator';
         LojaListComponent,
         CatalogoComponent,
         PaginationComponent,
+        WoocommerceListPublicadoComponent
     ],
     imports     : [
         AppsRoutes,
@@ -56,6 +59,7 @@ import {PaginatorModule} from 'primeng/paginator';
      providers: [
          AuthService,
         ProdutoService,
+        WoocommerceService
     ],
 })
 export class AppsModule

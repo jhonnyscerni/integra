@@ -52,4 +52,12 @@ export const navigation: FuseNavigation[] = [
         url      : '/apps/produtos/catalogo',
     },
 
+    {
+        id       : 'woocommerce',
+        title    : 'Produtos Pulicados',
+        type     : 'item',
+        icon     : 'web',
+        url      : '/apps/woocommerce/woocommerce-list-publicado',
+    },
+
 ];
