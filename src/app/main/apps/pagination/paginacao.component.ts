@@ -56,8 +56,8 @@ export class PaginationComponent implements OnInit {
 
     setPagetion(){
         let pages = new Array<number>();
-        let inc =  (this.page.number - 2) <= 0 ? (4 - this.page.number) : 2;
-        let dec =  (this.page.number + 2) >= this.page.totalPages ? (5 - (this.page.totalPages - this.page.number)) : 2;
+        let inc =  (this.page.number - 2) <= 0 ? (9 - this.page.number) : 2;
+        let dec =  (this.page.number + 2) >= this.page.totalPages ? (10 - (this.page.totalPages - this.page.number)) : 7;
         let inicio = (this.page.number - dec) <= 0 ? 0 : (this.page.number - dec);
         let fim = (this.page.number + inc) < this.page.totalPages ? (this.page.number + inc) : (this.page.totalPages - 1);
         for(let i = inicio; i<= fim; i++){
