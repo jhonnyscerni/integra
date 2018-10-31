@@ -57,7 +57,7 @@
             <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
               fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
               <div fxFlex="15" class="list-card-field"><img src="{{item?.mainImage.filename}}" width="60"></div>
-              <div fxFlex="40" class="list-card-field">{{item?.name}}</div>
+              <div fxFlex="40" class="list-card-field"><a target="_blanck" href="https://app.squidfacil.com.br/catalog/product/{{item?.slug}}" >{{item?.name}}</a> </div>
               <div fxFlex="10" class="list-card-field">{{item?.sku}}</div>
               <div fxFlex="10" class="list-card-field" >{{item?.squidPrice.amount }}</div>
               <div fxFlex="10" class="list-card-field">{{item?.suggestedRetailPrice.amount }}</div>
