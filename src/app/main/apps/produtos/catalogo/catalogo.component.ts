@@ -2,6 +2,7 @@ import { Produto } from './../../../../models/produto';
 import { ProdutoService } from './../../../../services/produto.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { Page } from '../../../../models/page';
 
 
 @Component({
@@ -11,22 +12,29 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 export class CatalogoComponent implements OnInit {
 
-  ELEMENT_DATA: Produto[];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  
+  private products: Array<any> = []
+  private page : Page;
+
   constructor(private produtoServive: ProdutoService) { }
 
   ngOnInit() {
-    this.getProdutos();
+    this.pageProducts(1, 60);
   }
 
-  getProdutos() {
-    this.produtoServive.getProdutos()
-    .subscribe((data: any) => {
-      console.log(data);
-      this.ELEMENT_DATA = data._embedded.product as Produto[];
+  pageProducts(page, size){
+    this.produtoServive.getProdutos(page, size).subscribe((res:any) => {
+      this.page = res
+      this.products =  res._embedded.product as Produto[];
+      this.page.totalPages = res.page_count
+      this.page.size = res.page_size
+      this.page.number = res.page
+      console.log(this.page);
     });
   }
+
+  changePage(event){
+    this.pageProducts(event.page, event.size);
+   }
 
 }

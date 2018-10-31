@@ -43,15 +43,15 @@
           </mat-list-item>
         
 
-      <div fxLayout="column" *ngFor="let item of ELEMENT_DATA">
+      <div fxLayout="column" *ngFor="let item of products">
         <mat-list-item role="listitem" class="list-item-resp">
           <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
             <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
               fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
               <div fxFlex="30" class="list-card-field"><img src="{{item?.mainImage.filename}}" width="50"></div>
               <div fxFlex="20" class="list-card-field">{{item?.sku}}</div>
-              <div fxFlex="20" class="list-card-field" >{{item?.squidPrice.amount | currency:'BRL':true}}</div>
-              <div fxFlex="20" class="list-card-field">{{item?.suggestedRetailPrice.amount | currency:'BRL':true}}</div>
+              <div fxFlex="20" class="list-card-field" >{{item?.squidPrice.amount }}</div>
+              <div fxFlex="20" class="list-card-field">{{item?.suggestedRetailPrice.amount }}</div>
           
             </div>
           </div>
@@ -59,6 +59,8 @@
       </div>
 
     </mat-list>
+
+      <pagination [page]="page" (paginationEvent)=changePage($event)></pagination>
     
     </div>
 

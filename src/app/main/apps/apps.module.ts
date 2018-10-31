@@ -11,13 +11,17 @@ import { CommonModule } from '../../../../node_modules/@angular/common';
 import { MatIconModule, MatSelectModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatCardModule, MatSnackBarModule, MatTableModule, MatCheckboxModule, MatPaginatorModule, MatListModule } from '../../../../node_modules/@angular/material';
 import { LojaEditComponent } from './lojas/loja-edit/loja-edit.component';
 import { HttpModule } from '@angular/http';
+import { PaginationComponent } from './pagination/paginacao.component';
+
+import {PaginatorModule} from 'primeng/paginator';
 
 
 @NgModule({
     declarations: [
         LojaEditComponent,
         LojaListComponent,
-        CatalogoComponent
+        CatalogoComponent,
+        PaginationComponent,
     ],
     imports     : [
         AppsRoutes,
@@ -26,6 +30,9 @@ import { HttpModule } from '@angular/http';
         MatIconModule, 
         HttpModule,
 
+
+        //PRIMENG
+        PaginatorModule,
 
         //COMPONENTS
         MatButtonModule,
