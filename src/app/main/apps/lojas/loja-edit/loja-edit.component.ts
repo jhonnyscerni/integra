@@ -37,9 +37,11 @@ export class LojaEditComponent implements OnInit {
 
   onSubmit() {
 
-    this.oAuth.login(this.loja.clientId, this.loja.clientSecret).subscribe(loja => {
+    this.oAuth.login().subscribe(loja => {
       console.log(loja);
-      this.snackBar.open(`${this.loja.nome} salvo com sucesso!`, '', { duration: 10000 });
+      localStorage.setItem('access_token', loja.access_token);
+      localStorage.setItem('expires_in', JSON.stringify(loja.expires_in.valueOf()));
+     // this.snackBar.open(`${this.loja} salvo com sucesso!`, '', { duration: 10000 });
     });
 
   }

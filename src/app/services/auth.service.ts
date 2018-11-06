@@ -22,15 +22,6 @@ export class AuthService {
 
   constructor(private http: Http) { }
 
-  private setSession(authResult) {
-    const token = authResult.token;
-    const payload = <Loja> jwtDecode(token);
-    const expiresAt = moment.unix(payload.exp);
-
-    localStorage.setItem('access_token', authResult.token);
-    localStorage.setItem('expires_in', JSON.stringify(expiresAt.valueOf()));
-  }
-
   get token(): string {
     return localStorage.getItem('access_token');
   }
@@ -41,7 +32,7 @@ export class AuthService {
     return formData;
   }
 
-  login(client_id: string, client_secret: string ): Observable<any> {
+  login(): Observable<any> {
 
     const body = {
       'grant_type': 'client_credentials',
@@ -55,42 +46,8 @@ export class AuthService {
     const myFormData = this.getFormData(body);
 
     headers.append('Content-Type' , 'application/json');
-
-    /**
-     *  headers.append('Content-Type' , 'application/json'),
-        headers.append('client_id', '130fe560-fb2a-4b82-a674-6478782ff881'),
-        headers.append('client_secret', 'ydAK+UGPIwWFDZuoagOXh+k6VbBwN1SoOXy3Ofev'),
-        headers.append('grant_type', 'client_credentials')
-     */
     
     return this.http.post(this.apiRoot, myFormData).map(res => res.json());
   }
 
-
-
-  refreshToken() {
-    if (moment().isBetween(this.getExpiration().subtract(1, 'days'), this.getExpiration())) {
-      return this.http.post( this.apiRoot,
-        { token: this.token }
-      ).pipe(
-        tap(response => this.setSession(response)),
-        shareReplay(),
-      ).subscribe();
-    }
-  }
-
-  getExpiration() {
-    const expiration = localStorage.getItem('expires_in');
-    const expiresAt = JSON.parse(expiration);
-
-    return moment(expiresAt);
-  }
-
-  isLoggedIn() {
-    return moment().isBefore(this.getExpiration());
-  }
-
-  isLoggedOut() {
-    return !this.isLoggedIn();
-  }
 }

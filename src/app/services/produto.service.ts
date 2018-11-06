@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { Http, Headers } from '../../../node_modules/@angular/http';
@@ -10,14 +11,14 @@ import { Page } from '../models/page';
 export class ProdutoService {
 
 
-constructor(private http: Http) { }
+constructor(private http: Http, private oAuth : AuthService) { }
 
 
 public getProdutos(page, size): Observable<Page> {
 
   const headers = new Headers();
 
-  headers.append('Authorization', 'Bearer a03bc8a3c387deb73ecb813bc43a31df70f49cbe');
+  headers.append('Authorization', `Bearer ${this.oAuth.token}` );
 
   return this.http.get(`${environment.urlbase}/products/available?page=${page}&size=${size}` ,  {headers})
       .map( (res:any) => {

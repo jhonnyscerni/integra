@@ -12,7 +12,6 @@ import { Page } from '../../../../models/page';
 })
 export class CatalogoComponent implements OnInit {
 
-
   private products: Array<any> = []
   private page : Page;
 
