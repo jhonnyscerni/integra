@@ -1,6 +1,5 @@
 import { WoocommerceListPublicadoComponent } from './woocommerce/woocommerce-list-publicado/woocommerce-list-publicado.component';
 import { ProdutoService } from './../../services/produto.service';
-import { AuthService } from './../../services/auth.service';
 import { CatalogoComponent } from './produtos/catalogo/catalogo.component';
 import { LojaListComponent } from './lojas/loja-list/loja-list.component';
 import { AppsRoutes } from './apps.routing';
@@ -16,6 +15,7 @@ import { PaginationComponent } from './pagination/paginacao.component';
 
 import {PaginatorModule} from 'primeng/paginator';
 import { WoocommerceService } from '../../services/woocommerce.service';
+import { SquidFacilService } from 'app/services/squid-facil.service';
 
 
 @NgModule({
@@ -57,7 +57,7 @@ import { WoocommerceService } from '../../services/woocommerce.service';
       
     ],
      providers: [
-         AuthService,
+        SquidFacilService,
         ProdutoService,
         WoocommerceService
     ],

@@ -1,5 +1,7 @@
 <div class="page-layout simple fullwidth">
 
+    
+
     <!-- HEADER -->
     <div class="header mat-accent-bg p-24 h-160" fxLayout="row" fxLayoutAlign="start center">
         <div fxLayout="column" fxLayoutAlign="center start">
@@ -8,7 +10,7 @@
                 <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
                 <span class="secondary-text">Dashboard</span>
             </div>
-            <div class="h1 mt-16">Incluir Loja</div>
+            <div class="h1 mt-16">Gerar Token</div>
         </div>
     </div>
     <!-- / HEADER -->
@@ -17,33 +19,12 @@
   <div class="content p-24 mat-white-bg">
       <form #vform="ngForm" autocomplete="off" class="example-form" (ngSubmit)="onSubmit()">
 
-          <h4>Nome da loja</h4>
-          <mat-form-field class="example-full-width">
-            <input matInput #loja="ngModel" [(ngModel)]="loja.nome" name="nome" placeholder="Nome da Loja" required>
-            <mat-error [hidden]="loja.valid || (loja.pristine && !vform.submitted)">
-                O nome da Loja é um campo obrigatório.
-              </mat-error>
-          </mat-form-field>
-
           <div class="h1">
-              Integração com Fornecedor
+              Gerar Token - Integração com Fornecedor
           </div>
 
-            <h4>Client ID Squid Fácil</h4>
-            <mat-form-field class="example-full-width">
-                <input matInput #clientId="ngModel" name="clientId" [(ngModel)]="loja.clientId">
-                <mat-error [hidden]="clientId.valid || (clientId.pristine && !vform.submitted)" required>
-                    O Cliente ID Squid Fácil é um campo obrigatório.
-                </mat-error>
-              </mat-form-field>
-
-              <h4>Client Secret Squid Fácil</h4>
-              <mat-form-field class="example-full-width">
-                  <input matInput #clientSecret="ngModel" name="clientSecret" [(ngModel)]="loja.clientSecret" required>
-                  <mat-error [hidden]="clientSecret.valid || (clientSecret.pristine && !vform.submitted)" required>
-                    O Cliente SECRET Squid Fácil é um campo obrigatório.
-                </mat-error>
-                </mat-form-field>
+          <div> Acess Token: {{access_token}} </div>
+          <div> Tempo de Acesso: {{expires_in}} </div>
 
                 <div fxLayout="column">
                     <mat-card-actions>
