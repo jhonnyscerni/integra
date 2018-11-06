@@ -27,29 +27,46 @@ export class AuthService {
     const payload = <Loja> jwtDecode(token);
     const expiresAt = moment.unix(payload.exp);
 
-    localStorage.setItem('token', authResult.token);
-    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+    localStorage.setItem('access_token', authResult.token);
+    localStorage.setItem('expires_in', JSON.stringify(expiresAt.valueOf()));
   }
 
   get token(): string {
-    return localStorage.getItem('token');
+    return localStorage.getItem('access_token');
+  }
+
+  getFormData(object) {
+    const formData = new FormData();
+    Object.keys(object).forEach(key => formData.append(key, object[key]));
+    return formData;
   }
 
   login(client_id: string, client_secret: string ): Observable<any> {
 
+    const body = {
+      'grant_type': 'client_credentials',
+      'client_id' : '130fe560-fb2a-4b82-a674-6478782ff881',
+      'client_secret': 'ydAK+UGPIwWFDZuoagOXh+k6VbBwN1SoOXy3Ofev',
+      'scope': ''
+     };
+
     const headers = new Headers();
 
+    const myFormData = this.getFormData(body);
+
     headers.append('Content-Type' , 'application/json');
+
+    /**
+     *  headers.append('Content-Type' , 'application/json'),
+        headers.append('client_id', '130fe560-fb2a-4b82-a674-6478782ff881'),
+        headers.append('client_secret', 'ydAK+UGPIwWFDZuoagOXh+k6VbBwN1SoOXy3Ofev'),
+        headers.append('grant_type', 'client_credentials')
+     */
     
-    return this.http.post(this.apiRoot, 
-        JSON.stringify({ 'client_id': client_id, 'client_secret': client_secret, 'grant_type':'client_credentials'}), {headers}
-        ).map(res => res.json());
+    return this.http.post(this.apiRoot, myFormData).map(res => res.json());
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('expires_at');
-  }
+
 
   refreshToken() {
     if (moment().isBetween(this.getExpiration().subtract(1, 'days'), this.getExpiration())) {
@@ -63,7 +80,7 @@ export class AuthService {
   }
 
   getExpiration() {
-    const expiration = localStorage.getItem('expires_at');
+    const expiration = localStorage.getItem('expires_in');
     const expiresAt = JSON.parse(expiration);
 
     return moment(expiresAt);

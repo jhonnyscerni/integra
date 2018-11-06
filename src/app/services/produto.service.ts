@@ -17,7 +17,7 @@ public getProdutos(page, size): Observable<Page> {
 
   const headers = new Headers();
 
-  headers.append('Authorization', 'Bearer ab5896a233e6b8f2c8b0e16ccc278f80cecfc7d8');
+  headers.append('Authorization', 'Bearer a03bc8a3c387deb73ecb813bc43a31df70f49cbe');
 
   return this.http.get(`${environment.urlbase}/products/available?page=${page}&size=${size}` ,  {headers})
       .map( (res:any) => {
