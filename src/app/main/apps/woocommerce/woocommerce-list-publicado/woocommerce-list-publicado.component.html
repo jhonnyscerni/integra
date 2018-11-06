@@ -37,8 +37,9 @@
         <mat-list-item role="listitem" class="list-item-resp">
           <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
             <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
-              fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp"> 
-              <div fxFlex="100" class="list-card-field" >{{item?.title.rendered }}</div>      
+              fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
+              <div fxFlex="100" class="list-card-field" [innerHTML]="[item?.title.rendered] | safeHtml" ></div> 
+
             </div>
           </div>
         </mat-list-item>

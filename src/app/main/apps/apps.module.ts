@@ -16,6 +16,7 @@ import { PaginationComponent } from './pagination/paginacao.component';
 import {PaginatorModule} from 'primeng/paginator';
 import { WoocommerceService } from '../../services/woocommerce.service';
 import { SquidFacilService } from 'app/services/squid-facil.service';
+import { SafeHtmlPipe } from 'app/pipe/safe-html.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SquidFacilService } from 'app/services/squid-facil.service';
         LojaListComponent,
         CatalogoComponent,
         PaginationComponent,
-        WoocommerceListPublicadoComponent
+        WoocommerceListPublicadoComponent, 
+        SafeHtmlPipe,
     ],
     imports     : [
         AppsRoutes,
