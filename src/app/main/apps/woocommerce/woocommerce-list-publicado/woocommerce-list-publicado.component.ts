@@ -18,7 +18,10 @@ export class WoocommerceListPublicadoComponent implements OnInit {
   }
 
   public getWooCommerceProdutsPublicados() {
-    this.woocommerceService.getProdutoWooPublicados().subscribe(res => this.products = res)
+    this.woocommerceService.getProdutoWooPublicados().subscribe(res => { 
+        console.log(res)    
+        this.products = res
+    })
   }
 
 }

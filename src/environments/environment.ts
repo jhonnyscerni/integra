@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    urlbasewoo: "http:/www.gluckpark.com.br/gluck",
+    urlbasewoo: "http://www.gluckpark.com.br/gluck",
     urlbase: " https://app.squidfacil.com.br/api",
     production: false,
     hmr       : false,

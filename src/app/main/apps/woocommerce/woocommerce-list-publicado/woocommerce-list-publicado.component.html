@@ -8,7 +8,7 @@
               <mat-icon class="secondary-text s-16">chevron_right</mat-icon>
               <span class="secondary-text">Dashboard</span>
           </div>
-          <div class="h1 mt-16">Catálogo</div>
+          <div class="h1 mt-16">Produtos Publicados no WooCommerce</div>
       </div>
   </div>
   <!-- / HEADER -->
@@ -38,7 +38,7 @@
           <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
             <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
               fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp"> 
-              <div fxFlex="100" class="list-card-field" >{{item?.name }}</div>      
+              <div fxFlex="100" class="list-card-field" >{{item?.title.rendered }}</div>      
             </div>
           </div>
         </mat-list-item>
